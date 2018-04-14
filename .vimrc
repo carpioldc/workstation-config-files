@@ -108,6 +108,7 @@ set expandtab
 set bg=dark
 
 " Backup configuration
+" You may need to create the directories
 set backup
 set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
@@ -119,6 +120,9 @@ set undofile
 set number
 
 " Enable pathogen plugins
+" You may need to download and install pathogen:
+"   mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+"   curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 execute pathogen#infect()
 filetype plugin indent on
 

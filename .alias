@@ -8,14 +8,6 @@ alias lssysd="systemctl list-units --type=service | grep running | sed 's/.*runn
 alias blame='grep --exclude-dir=node_modules --exclude="*~" -rn . -ie'
 alias ls="ls -B"
 
-# For git repo shortcuts
-# example: alias repo1="gg /path/to/repo1"
-function gg {
-  cd $1
-  git status
-  git --no-pager log -n1
-}
-
 ### Git aliases
 #   - initting
 alias gi='git init'
@@ -88,3 +80,21 @@ fi
 if [ -f '~/.profile' ]; then 
   . '~/.profile'
 fi
+
+# Functions
+
+# For git repo shortcuts
+# example: alias repo1="gg /path/to/repo1"
+function gg {
+  cd $1
+  git status
+  git --no-pager log -n1
+}
+
+# Substitute files creating a backup
+function substitute {
+  if [ -f $1 ]; then
+    cp $1 $1.old
+  fi 
+  cp $2 $1
+}
