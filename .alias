@@ -1,0 +1,90 @@
+# User specific aliases and functions
+
+# Unregister evil ll alias
+unalias ll
+
+# Generic aliases
+alias lssysd="systemctl list-units --type=service | grep running | sed 's/.*running \(.*\)$/\1/'"
+alias blame='grep --exclude-dir=node_modules --exclude="*~" -rn . -ie'
+alias ls="ls -B"
+
+# For git repo shortcuts
+# example: alias repo1="gg /path/to/repo1"
+function gg {
+  cd $1
+  git status
+  git --no-pager log -n1
+}
+
+### Git aliases
+#   - initting
+alias gi='git init'
+alias gib='git init --bare'
+
+#   - adding
+alias ga='git add'
+alias gaa='git add .'
+alias gaaa='git add --all'
+alias gau='git add --update'
+
+#   - commiting
+alias gc='git commit'
+alias gcm='git commit --message'
+alias gcf='git commit --fixup'
+
+#   - checking out
+alias gco='git checkout'
+alias gcob='git checkout -b'
+alias gcom='git checkout master'
+alias gcos='git checkout staging'
+alias gcod='git checkout develop'
+
+#   - viewing logs and status
+alias gll='git --no-pager log --pretty=oneline -10'
+alias glg='git log --graph --oneline --decorate --all'
+alias gld='git log --pretty=format:"%h %ad %s" --date=short --all'
+alias gs='git status'
+alias gss='git status --short'
+
+#   - branching
+alias gb='git branch'
+alias gbd='git branch --delete '
+
+#   - diffing
+alias gd='git diff'
+alias gda='git diff HEAD'
+
+#   - merging and rebasing
+alias gm='git merge --no-ff'
+alias gma='git merge --abort'
+alias gmc='git merge --continue'
+alias gr='git rebase'
+
+#   - fetching, pulling and pushing
+alias gf='git fetch'
+alias gpl='git pull'
+alias gplr='git pull --rebase'
+alias gps='git push'
+
+#   - stashing
+alias gst='git stash'
+alias gsta='git stash apply'
+alias gstd='git stash drop'
+alias gstl='git stash list'
+alias gstp='git stash pop'
+alias gsts='git stash save'
+### End of Git aliases
+
+# Change bg property on .vimrc
+alias bglight='sed -i "s/set bg=dark/set bg=light/" ~/.vimrc'
+alias bgdark='sed -i "s/set bg=light/set bg=dark/" ~/.vimrc'
+
+# Source goto methods
+if [ -f '~/.goto.bash' ]; then
+  . '~/.goto.bash'
+fi
+
+# Source .profile
+if [ -f '~/.profile' ]; then 
+  . '~/.profile'
+fi

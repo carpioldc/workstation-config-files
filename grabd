@@ -1,0 +1,32 @@
+#!/bin/bash -x
+
+# Move or cp last n files created under ~/Downloads to the specified directory
+# 
+# Arguments: 
+#   $1  cmd   command (mv or cp)
+#   $2  n     number of files to move
+#   $3  dest  destination folder 
+
+function print_help() {
+  echo "Usage: down <cmd> <n> <dest>"
+}
+
+downdir="$HOME/Downloads"
+testnum=$(echo "$2" | grep '^\s*[0-9]\+\s*$' > /dev/null | echo $?)
+
+if [[ ("$1" == 'mv' || "$1" == 'cp') && $testnum == 0 && -d $3 ]]
+then
+  op=$1
+  n=$2 
+  if [ -d $3 ]; then
+    files=`ls -lhtC $downdir | head -$(( $n + 1 )) | tail -$n`
+    IFS=$'\n'
+    for file in $files; do
+      $op "$downdir/$file" "$3"
+    done
+  else
+    echo "Destination is not a folder"
+  fi
+else
+  print_help
+fi

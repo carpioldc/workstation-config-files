@@ -1,0 +1,8 @@
+[color]
+	diff = auto
+	status = auto
+[user]
+	name = Jorge Carpio
+	email = carpioldc@gmail.com
+[push]
+	default = simple
