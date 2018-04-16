@@ -83,18 +83,42 @@ fi
 
 # Functions
 
-# For git repo shortcuts
-# example: alias repo1="gg /path/to/repo1"
+# Name: gg
+# Description: for git repo shortcuts
+# Args:
+#   $1: path to repo
+# Example: alias repo1="gg /path/to/repo1"
 function gg {
   cd $1
   git status
   git --no-pager log -n1
 }
 
-# Substitute files creating a backup
+# Name: substitute
+# Description: ubstitute files creating a backup
+# Args: 
+#   $1: file to be substituted
+#   $2: file that substitutes $1
 function substitute {
   if [ -f $1 ]; then
     cp $1 $1.old
   fi 
   cp $2 $1
+}
+
+# Name: dive
+# Description: recursively go to biggest subdirectory. Output biggest file in leaf dir.
+# Args: none
+function dive () {
+  find_biggest='sort -h <(du -chs *) | tail -2 | head -1 | cut -f2'
+  biggest=$(eval $find_biggest)
+
+  while [[ -d $biggest ]]; do
+    cd $biggest
+    biggest=$(eval $find_biggest)
+  done
+
+  # Output biggest file
+  echo "Arrived to leaf directory. Biggest file is:"
+  echo $(pwd)/$biggest
 }
