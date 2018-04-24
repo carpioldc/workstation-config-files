@@ -6,7 +6,12 @@ unalias ll
 # Generic aliases
 alias lssysd="systemctl list-units --type=service | grep running | sed 's/.*running \(.*\)$/\1/'"
 alias blame='grep --exclude-dir=node_modules --exclude="*~" -rn . -ie'
+<<<<<<< Updated upstream
 alias ls="ls -B --color=auto"
+=======
+alias ls="ls -B"
+alias space="du -chs * | sort -h"
+>>>>>>> Stashed changes
 
 ### Git aliases
 #   - initting
