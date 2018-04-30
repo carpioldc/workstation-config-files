@@ -1,7 +1,7 @@
 # User specific aliases and functions
 
 # Unregister evil ll alias
-unalias ll
+unalias ll 2>/dev/null
 
 # Generic aliases
 alias lssysd="systemctl list-units --type=service | grep running | sed 's/.*running \(.*\)$/\1/'"
@@ -127,4 +127,19 @@ function dive () {
   # Output biggest file
   echo "Arrived to leaf directory. Biggest file is:"
   echo $(pwd)/$biggest
+}
+
+# Name: unskp
+# Description: rename all files in directory to have no escapable characters (they are annoying).
+# Args: none
+function unskp () {
+  IFS=$'\n'
+  for file in $(find . -maxdepth 1 -name "*" -type f); do
+    fname_old=$file
+    fname_new=$(sed 's/[^a-zA-Z0-9,._+@%/-]/_/g' <(echo $fname_old))
+    # echo Old file name: $fname_old
+    # echo New file name: $fname_new
+    mv -v $fname_old $fname_new
+    IFS=$'\n'
+  done
 }
