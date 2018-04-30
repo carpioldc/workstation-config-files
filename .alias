@@ -9,6 +9,11 @@ alias blame='grep --exclude-dir=node_modules --exclude="*~" -rn . -ie'
 alias ls="ls -B --color=auto"
 alias space="du -chs * | sort -h"
 
+### Node aliases
+alias ns="npm start"
+alias nsd="export DEBUG=*; npm start"
+alias nt="npm test"
+
 ### Git aliases
 #   - initting
 alias gi='git init'
