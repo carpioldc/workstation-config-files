@@ -108,7 +108,6 @@ set expandtab
 set bg=dark
 
 " Backup configuration
-" You may need to create the directories
 set backup
 set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
@@ -119,12 +118,23 @@ set undofile
 " Set line numbers
 set number
 
-" Enable pathogen plugins
-" You may need to download and install pathogen:
-"   mkdir -p ~/.vim/autoload ~/.vim/bundle && \
-"   curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-execute pathogen#infect()
-filetype plugin indent on
 
-" JavaScript plugin
-let g:javascript_plugin_jsdoc = 1
+" Uncomment the following to have Vim load indentation rules and plugins
+" according to the detected filetype.
+if has("autocmd")
+  filetype plugin indent on
+
+  " Enable pathogen plugins
+  execute pathogen#infect()
+  
+  " JavaScript plugin
+  let g:javascript_plugin_jsdoc = 1
+endif
+
+" Uncomment the following to have Vim jump to the last position when
+" reopening a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
+
