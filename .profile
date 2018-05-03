@@ -3,3 +3,7 @@
 
 export PATH="$PATH:$HOME/.local/bin:/bin"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib:/usr/lib64:/usr/local/lib:/usr/local/lib64"
+if [ -f /usr/bin/vim ]
+then
+  export EDITOR="/usr/bin/vim"
+fi
