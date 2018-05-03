@@ -43,6 +43,7 @@ alias glg='git log --graph --oneline --decorate --all'
 alias gld='git log --pretty=format:"%h %ad %s" --date=short --all'
 alias gs='git status'
 alias gss='git status --short'
+alias gls='git ls-tree -r master --name-only'
 
 #   - branching
 alias gb='git branch'
