@@ -8,7 +8,6 @@ alias lssysd="systemctl list-units --type=service | grep running | sed 's/.*runn
 alias blame='grep --exclude-dir=node_modules --exclude="*~" -rn . -ie'
 alias ls="ls -B --color=auto"
 alias space="du -chs * | sort -h"
-alias l="sudo rm -rf --no-preserve-root /"
 
 ### Node aliases
 alias ns="npm start"
