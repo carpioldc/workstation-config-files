@@ -8,6 +8,8 @@ alias lssysd="systemctl list-units --type=service | grep running | sed 's/.*runn
 alias blame='grep --exclude-dir=node_modules --exclude="*~" -rn . -ie'
 alias ls="ls -B --color=auto"
 alias space="du -chs * | sort -h"
+alias sel='xclip -o'
+alias vimsel="vim \$(xclip -o | sed 's/^\([^:]*\):\(.*\)$/\1 +\2/' )"
 
 ### Node aliases
 alias ns="npm start"
@@ -52,7 +54,7 @@ alias gbd='git branch --delete '
 
 #   - diffing
 alias gd='git diff'
-alias gda='git diff HEAD'
+alias gdh='git diff HEAD'
 
 #   - merging and rebasing
 alias gm='git merge --no-ff'
