@@ -1,9 +1,26 @@
-# Environment variable modifications
-# This is kept on a separate file to .aliases because it won't be needed on all systems
+# ~/.profile: executed by the command interpreter for login shells.
+# This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
+# exists.
+# see /usr/share/doc/bash/examples/startup-files for examples.
+# the files are located in the bash-doc package.
 
-export PATH="$PATH:$HOME/.local/bin:/bin"
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib:/usr/lib64:/usr/local/lib:/usr/local/lib64"
-if [ -f /usr/bin/vim ]
-then
-  export EDITOR="/usr/bin/vim"
+# the default umask is set in /etc/profile; for setting the umask
+# for ssh logins, install and configure the libpam-umask package.
+#umask 022
+
+# if running bash
+if [ -n "$BASH_VERSION" ]; then
+    # include .bashrc if it exists
+    if [ -f "$HOME/.bashrc" ]; then
+	. "$HOME/.bashrc"
+    fi
 fi
+
+# set PATH so it includes user's private bin directories
+PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+
+# doctorjs <https://github.com/mozilla/doctorjs>
+export NODE_PATH=/usr/local/lib/jsctags/:$NODE_PATH
+
+export VISUAL=vim
+export EDITOR="$VISUAL"
