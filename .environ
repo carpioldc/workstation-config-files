@@ -1,0 +1,24 @@
+# Environment variable modifications
+# This is kept on a separate file to .aliases because it won't be needed on all systems
+#
+# Add the following lines to one of the shell startup files in order to source this file:
+# 
+# if [ -f $HOME/.environ ]; then
+# 	. $HOME/.environ
+# fi
+
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib:/usr/lib64:/usr/local/lib:/usr/local/lib64"
+
+# set PATH so it includes user's private bin directories
+PATH="$PATH:$HOME/.local/bin:/bin"
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+PATH="$PATH:$HOME/.rvm/bin"
+export PATH 
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+# doctorjs <https://github.com/mozilla/doctorjs>
+export NODE_PATH=/usr/local/lib/jsctags/:$NODE_PATH
+
+export VISUAL=vim
+export EDITOR="$VISUAL"
